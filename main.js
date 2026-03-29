@@ -1,9 +1,82 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const consentCookieName = "ps_montage_cookie_consent";
+    const googleFontsHref = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap";
+    const cookieBanner = document.querySelector(".cookie-banner");
+    const cookieButtons = cookieBanner?.querySelectorAll("[data-cookie-choice]") ?? [];
+    const reopenCookieSettingsButton = document.querySelector("[data-open-cookie-settings]");
     const toggle = document.querySelector(".menu-toggle");
     const mobileNav = document.querySelector(".mobile-nav");
 
+    const getConsent = () => {
+        const cookieEntry = document.cookie
+            .split("; ")
+            .find((entry) => entry.startsWith(`${consentCookieName}=`));
+
+        return cookieEntry ? decodeURIComponent(cookieEntry.split("=")[1]) : "";
+    };
+
+    const setConsent = (value) => {
+        const maxAge = 60 * 60 * 24 * 180;
+        document.cookie = `${consentCookieName}=${encodeURIComponent(value)}; max-age=${maxAge}; path=/; SameSite=Lax`;
+    };
+
+    const loadGoogleFonts = () => {
+        const existingLink = document.querySelector(`link[data-font-consent="google-inter"]`);
+        if (existingLink) {
+            return;
+        }
+
+        const fontLink = document.createElement("link");
+        fontLink.rel = "stylesheet";
+        fontLink.href = googleFontsHref;
+        fontLink.dataset.fontConsent = "google-inter";
+        document.head.appendChild(fontLink);
+    };
+
+    const hideCookieBanner = () => {
+        cookieBanner?.classList.remove("is-visible");
+        document.body.classList.remove("cookie-banner-visible");
+    };
+
+    const showCookieBanner = () => {
+        cookieBanner?.classList.add("is-visible");
+        document.body.classList.add("cookie-banner-visible");
+    };
+
+    const applyConsent = (value) => {
+        if (value === "accepted") {
+            loadGoogleFonts();
+            hideCookieBanner();
+            return;
+        }
+
+        if (value === "declined") {
+            hideCookieBanner();
+            return;
+        }
+
+        showCookieBanner();
+    };
+
     toggle?.addEventListener("click", () => {
         mobileNav?.classList.toggle("active");
+    });
+
+    cookieButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const choice = button.getAttribute("data-cookie-choice");
+            if (!choice) {
+                return;
+            }
+
+            setConsent(choice);
+            applyConsent(choice);
+        });
+    });
+
+    reopenCookieSettingsButton?.addEventListener("click", () => {
+        showCookieBanner();
+        cookieBanner?.scrollIntoView({ behavior: "smooth", block: "end" });
     });
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -141,4 +214,6 @@ document.addEventListener("DOMContentLoaded", () => {
         updateCarousel();
         startAutoplay();
     }
+
+    applyConsent(getConsent());
 });
