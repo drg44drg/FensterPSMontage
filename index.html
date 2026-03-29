@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.S. Montage - Fenster und Türen in Coburg</title>
-    <meta name="description" content="P.S. Montage aus Dörfles-Esbach: Fenster, Türen, Rollläden, Innenausbau und Bodenbelag - Beratung, Planung und Montage aus einer Hand.">
+    <title>P.S. Montage - Fenster und Türen bundesweit</title>
+    <meta name="description" content="P.S. Montage: Fenster, Türen, Rollläden, Innenausbau und Bodenbelag - Beratung, Planung und Montage aus einer Hand, bundesweit im Einsatz.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f1014'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-family='Arial' font-size='12' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,19 +18,34 @@
                 alt="P.S. Montage Logo"
             >
         </a>
-        <button class="menu-toggle" aria-label="Menü öffnen">
-            <span></span><span></span><span></span>
-        </button>
-        <nav class="nav-links">
-            <a href="#leistungen">Leistungen</a>
-            <a href="#ueber-uns">Über uns</a>
-            <a href="#projekte">Projekte</a>
-            <a href="#impressum">Impressum</a>
-            <a href="datenschutz.html">Datenschutz</a>
-            <a href="#kontakt" class="btn-primary">Kontakt</a>
-        </nav>
+        <div class="header-actions">
+            <nav class="nav-links">
+                <a href="#leistungen">Leistungen</a>
+                <a href="#ueber-uns">Über uns</a>
+                <a href="#projekte">Projekte</a>
+                <a href="#impressum">Impressum</a>
+                <a href="datenschutz.html">Datenschutz</a>
+                <a href="#kontakt" class="btn-primary">Kontakt</a>
+            </nav>
+            <button
+                class="theme-toggle"
+                type="button"
+                data-theme-toggle
+                aria-label="Hell- und Dunkelmodus wechseln"
+                title="Hell- und Dunkelmodus wechseln"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4.25"></circle>
+                    <path d="M12 1.75v2.5M12 19.75v2.5M4.75 4.75l1.8 1.8M17.45 17.45l1.8 1.8M1.75 12h2.5M19.75 12h2.5M4.75 19.25l1.8-1.8M17.45 6.55l1.8-1.8"></path>
+                </svg>
+                <span class="sr-only">Theme wechseln</span>
+            </button>
+            <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
-    <nav class="mobile-nav">
+    <nav class="mobile-nav" id="mobile-nav">
         <a href="#leistungen">Leistungen</a>
         <a href="#ueber-uns">Über uns</a>
         <a href="#projekte">Projekte</a>
@@ -45,7 +60,7 @@
         <article class="card craft-card" id="leistungen">
             <div class="card-topline">
                 <small>P.S. Montage</small>
-                <small>Coburg Region</small>
+                <small>Bundesweit auf Anfrage</small>
             </div>
             <div class="craft-intro-row">
                 <img class="craft-logo" src="IMG_3748.jpg" alt="P.S. Montage Signet">
@@ -56,12 +71,52 @@
             </div>
             <h1>Unsere Arbeit</h1>
             <p>Fenster, Türen und Ausbau mit klarer Planung, sauberen Details und zuverlässiger Montage.</p>
-            <div class="service-chips">
-                <span>Fenster</span>
-                <span>Türen</span>
-                <span>Rollläden</span>
-                <span>Innenausbau</span>
-                <span>Bodenbelag</span>
+            <div class="service-spotlight" aria-label="Leistungsbereiche">
+                <button
+                    class="service-panel is-active"
+                    type="button"
+                    data-service-panel
+                    aria-pressed="true"
+                >
+                    <strong>Fenster</strong>
+                    <span class="service-panel__copy">Passgenaue Lösungen für Neubau, Sanierung und energetische Modernisierung.</span>
+                </button>
+                <button
+                    class="service-panel"
+                    type="button"
+                    data-service-panel
+                    aria-pressed="false"
+                >
+                    <strong>Türen</strong>
+                    <span class="service-panel__copy">Sauber montiert, sicher im Alltag und abgestimmt auf Fassade und Nutzung.</span>
+                </button>
+                <button
+                    class="service-panel"
+                    type="button"
+                    data-service-panel
+                    aria-pressed="false"
+                >
+                    <strong>Rollläden</strong>
+                    <span class="service-panel__copy">Funktion, Schutz und Komfort mit langlebigen Systemen für Privat und Gewerbe.</span>
+                </button>
+                <button
+                    class="service-panel"
+                    type="button"
+                    data-service-panel
+                    aria-pressed="false"
+                >
+                    <strong>Innenausbau</strong>
+                    <span class="service-panel__copy">Klare Details, saubere Übergänge und Ausbauarbeiten mit ruhiger Handschrift.</span>
+                </button>
+                <button
+                    class="service-panel"
+                    type="button"
+                    data-service-panel
+                    aria-pressed="false"
+                >
+                    <strong>Bodenbelag</strong>
+                    <span class="service-panel__copy">Robuste und hochwertige Beläge, sorgfältig verlegt für ein stimmiges Gesamtbild.</span>
+                </button>
             </div>
         </article>
 
@@ -71,7 +126,7 @@
                 <p>Wir sehen Fenster und Türen nicht nur als Bauteile, sondern als Teil eines stimmigen Zuhauses.</p>
             </div>
             <p class="body-text">
-                Die Firma P.S. Montage, geführt von Inhaber Piotr Schyga, ist ein aufstrebender Fachbetrieb in Dörfles-Esbach.
+                Die Firma P.S. Montage, geführt von Inhaber Piotr Schyga, ist ein Fachbetrieb mit Sitz in Dörfles-Esbach und bundesweit im Einsatz.
                 Wir begleiten Neubau, Sanierung und Modernisierung von der Beratung bis zur finalen Montage.
             </p>
             <img
@@ -190,7 +245,7 @@
 </main>
 
 <footer class="site-footer">
-    <p>&copy; 2026 P.S. Montage - Inh. Piotr Schyga</p>
+    <p>&copy; 2026 LJDrg für P.S. Montage - Inh. Piotr Schyga</p>
     <p>Beratung, Planung und Montage aus einer Hand</p>
     <div class="footer-legal-links">
         <a href="#impressum">Impressum</a>
@@ -203,12 +258,12 @@
     <div class="legal-card" id="impressum">
         <small>Rechtliches</small>
         <h3>Impressum</h3>
-        <p><strong>Angaben gemaess § 5 DDG</strong></p>
+        <p><strong>Angaben gemäß § 5 DDG</strong></p>
         <p>
             P.S. Montage<br>
             Inhaber: Piotr Schyga<br>
             Coburger Str. 3<br>
-            96487 Doerfles-Esbach
+            96487 Dörfles-Esbach
         </p>
         <p>
             Telefon: <a href="tel:+4915127904265">0151 / 27904265</a><br>
@@ -216,7 +271,7 @@
             Website: <a href="https://montageexperte-ps.de">montageexperte-ps.de</a>
         </p>
         <p>
-            Verantwortlich fuer den Inhalt nach § 18 Abs. 2 MStV:<br>
+            Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:<br>
             Piotr Schyga, Anschrift wie oben.
         </p>
     </div>

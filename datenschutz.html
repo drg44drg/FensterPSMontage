@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datenschutz - P.S. Montage</title>
-    <meta name="description" content="Datenschutzerklaerung der P.S. Montage aus Doerfles-Esbach. Informationen zur Verarbeitung personenbezogener Daten auf montageexperte-ps.de.">
+    <meta name="description" content="Datenschutzerklärung der P.S. Montage. Informationen zur Verarbeitung personenbezogener Daten auf montageexperte-ps.de.">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230f1014'/%3E%3Ctext x='16' y='21' text-anchor='middle' fill='white' font-family='Arial' font-size='12' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,27 +18,53 @@
                 alt="P.S. Montage Logo"
             >
         </a>
-        <nav class="nav-links legal-nav">
-            <a href="index.html">Startseite</a>
-            <a href="index.html#leistungen">Leistungen</a>
-            <a href="index.html#ueber-uns">Über uns</a>
-            <a href="index.html#projekte">Projekte</a>
-            <a href="index.html#impressum">Impressum</a>
-            <a href="datenschutz.html" class="btn-primary">Datenschutz</a>
-        </nav>
+        <div class="header-actions">
+            <nav class="nav-links legal-nav">
+                <a href="index.html">Startseite</a>
+                <a href="index.html#leistungen">Leistungen</a>
+                <a href="index.html#ueber-uns">Über uns</a>
+                <a href="index.html#projekte">Projekte</a>
+                <a href="index.html#impressum">Impressum</a>
+                <a href="datenschutz.html" class="btn-primary">Datenschutz</a>
+            </nav>
+            <button
+                class="theme-toggle"
+                type="button"
+                data-theme-toggle
+                aria-label="Hell- und Dunkelmodus wechseln"
+                title="Hell- und Dunkelmodus wechseln"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="4.25"></circle>
+                    <path d="M12 1.75v2.5M12 19.75v2.5M4.75 4.75l1.8 1.8M17.45 17.45l1.8 1.8M1.75 12h2.5M19.75 12h2.5M4.75 19.25l1.8-1.8M17.45 6.55l1.8-1.8"></path>
+                </svg>
+                <span class="sr-only">Theme wechseln</span>
+            </button>
+            <button class="menu-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-nav">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
+    <nav class="mobile-nav" id="mobile-nav">
+        <a href="index.html">Startseite</a>
+        <a href="index.html#leistungen">Leistungen</a>
+        <a href="index.html#ueber-uns">Über uns</a>
+        <a href="index.html#projekte">Projekte</a>
+        <a href="index.html#impressum">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+    </nav>
 </header>
 
 <main class="legal-page">
-    <section class="legal-section legal-section--single" aria-label="Datenschutzerklaerung">
+    <section class="legal-section legal-section--single" aria-label="Datenschutzerklärung">
         <div class="legal-card" id="datenschutz">
             <small>Rechtliches</small>
-            <h1>Datenschutzerklaerung</h1>
+            <h1>Datenschutzerklärung</h1>
 
             <h4>1. Verantwortlicher</h4>
             <p>
-                Verantwortlich fuer die Datenverarbeitung auf dieser Website ist:<br>
-                P.S. Montage, Inhaber Piotr Schyga, Coburger Str. 3, 96487 Doerfles-Esbach,<br>
+                Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br>
+                P.S. Montage, Inhaber Piotr Schyga, Coburger Str. 3, 96487 Dörfles-Esbach,<br>
                 Telefon: <a href="tel:+4915127904265">0151 / 27904265</a>,
                 E-Mail: <a href="mailto:info@montageexperte-ps.de">info@montageexperte-ps.de</a>
             </p>
@@ -46,99 +72,99 @@
             <h4>2. Aufruf der Website</h4>
             <p>
                 Beim Besuch dieser Website werden durch den technischen Betrieb der Website und den Hosting-Dienstleister
-                regelmaessig technisch erforderliche Verbindungsdaten verarbeitet. Dazu koennen insbesondere IP-Adresse,
-                Datum und Uhrzeit des Abrufs, Browsertyp, Betriebssystem, Referrer-URL sowie angeforderte Dateien gehoeren.
-                Die Verarbeitung erfolgt zur Bereitstellung, Stabilitaet und Sicherheit der Website.
+                regelmäßig technisch erforderliche Verbindungsdaten verarbeitet. Dazu können insbesondere IP-Adresse,
+                Datum und Uhrzeit des Abrufs, Browsertyp, Betriebssystem, Referrer-URL sowie angeforderte Dateien gehören.
+                Die Verarbeitung erfolgt zur Bereitstellung, Stabilität und Sicherheit der Website.
             </p>
             <p>
                 Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse liegt in der sicheren und
-                zuverlaessigen Bereitstellung des Internetauftritts.
+                zuverlässigen Bereitstellung des Internetauftritts.
             </p>
 
             <h4>3. Kontaktaufnahme</h4>
             <p>
-                Wenn Sie uns telefonisch, per E-Mail oder ueber den auf dieser Website eingebundenen E-Mail-Kontakt ansprechen,
-                verarbeiten wir Ihre uebermittelten Daten ausschliesslich zur Bearbeitung Ihrer Anfrage. Das betrifft insbesondere
+                Wenn Sie uns telefonisch, per E-Mail oder über den auf dieser Website eingebundenen E-Mail-Kontakt ansprechen,
+                verarbeiten wir Ihre übermittelten Daten ausschließlich zur Bearbeitung Ihrer Anfrage. Das betrifft insbesondere
                 Name, Kontaktdaten und den Inhalt Ihrer Nachricht.
             </p>
             <p>
                 Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, soweit Ihre Anfrage auf den Abschluss
-                oder die Durchfuehrung eines Vertrags gerichtet ist, im Uebrigen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+                oder die Durchführung eines Vertrags gerichtet ist, im Übrigen auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
                 Unser berechtigtes Interesse liegt in der sachgerechten Beantwortung von Kontaktanfragen.
             </p>
             <p>
-                Das Kontaktformular dieser Website versendet Ihre Anfrage nicht ueber einen Server dieser Website, sondern
-                oeffnet Ihr E-Mail-Programm. Die eigentliche Uebermittlung erfolgt daher ueber den von Ihnen genutzten
+                Das Kontaktformular dieser Website versendet Ihre Anfrage nicht über einen Server dieser Website, sondern
+                öffnet Ihr E-Mail-Programm. Die eigentliche Übermittlung erfolgt daher über den von Ihnen genutzten
                 E-Mail-Dienst.
             </p>
 
             <h4>4. Cookies und Einwilligungsverwaltung</h4>
             <p>
                 Diese Website verwendet keine Analyse- oder Marketing-Cookies. Es wird lediglich Ihre Auswahl im Cookie-Hinweis
-                gespeichert, damit Ihre Entscheidung bei spaeteren Seitenaufrufen beruecksichtigt werden kann.
+                gespeichert, damit Ihre Entscheidung bei späteren Seitenaufrufen berücksichtigt werden kann.
             </p>
             <p>
-                Die Verarbeitung erfolgt, um Ihre Auswahl zu dokumentieren und den Cookie-Hinweis bei spaeteren Besuchen
-                entsprechend zu steuern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Soweit fuer die Speicherung oder den
-                Zugriff auf Informationen auf Ihrem Endgeraet eine Einwilligung erforderlich ist, erfolgt dies nach § 25 TDDDG.
+                Die Verarbeitung erfolgt, um Ihre Auswahl zu dokumentieren und den Cookie-Hinweis bei späteren Besuchen
+                entsprechend zu steuern. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Soweit für die Speicherung oder den
+                Zugriff auf Informationen auf Ihrem Endgerät eine Einwilligung erforderlich ist, erfolgt dies nach § 25 TDDDG.
             </p>
             <p>
-                Sie koennen Ihre Entscheidung jederzeit ueber den Button "Cookie-Einstellungen" im Footer erneut aufrufen und
-                aendern.
+                Sie können Ihre Entscheidung jederzeit über den Button "Cookie-Einstellungen" im Footer erneut aufrufen und
+                ändern.
             </p>
 
             <h4>5. Externe Schriftarten</h4>
             <p>
-                Google Fonts werden auf dieser Website nur nach Ihrer ausdruecklichen Zustimmung von Servern von Google geladen.
-                Dabei kann insbesondere Ihre IP-Adresse an Google uebermittelt werden. Ohne Zustimmung verwendet die Website
-                ausschliesslich lokale Standardschriften.
+                Google Fonts werden auf dieser Website nur nach Ihrer ausdrücklichen Zustimmung von Servern von Google geladen.
+                Dabei kann insbesondere Ihre IP-Adresse an Google übermittelt werden. Ohne Zustimmung verwendet die Website
+                ausschließlich lokale Standardschriften.
             </p>
             <p>
-                Es kann dabei auch zu einer Uebermittlung personenbezogener Daten in Drittstaaten, insbesondere in die USA,
+                Es kann dabei auch zu einer Übermittlung personenbezogener Daten in Drittstaaten, insbesondere in die USA,
                 kommen. Auf das Datenschutzniveau bei externen Anbietern haben wir nur den im Rahmen der Auswahl und Einbindung
                 bestehenden Einfluss.
             </p>
             <p>
-                Rechtsgrundlage ist Ihre Einwilligung gemaess Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie koennen
-                eine erteilte Einwilligung jederzeit mit Wirkung fuer die Zukunft widerrufen, indem Sie die Cookie-Einstellungen
-                erneut oeffnen.
+                Rechtsgrundlage ist Ihre Einwilligung gemäß Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TDDDG. Sie können
+                eine erteilte Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen, indem Sie die Cookie-Einstellungen
+                erneut öffnen.
             </p>
 
-            <h4>6. Empfaenger der Daten</h4>
+            <h4>6. Empfänger der Daten</h4>
             <p>
-                Empfaenger personenbezogener Daten koennen technische Dienstleister sein, die fuer den Betrieb und die
+                Empfänger personenbezogener Daten können technische Dienstleister sein, die für den Betrieb und die
                 Bereitstellung dieser Website erforderlich sind, insbesondere Hosting- und IT-Dienstleister, sowie die von Ihnen
                 bei der Kontaktaufnahme verwendeten Telekommunikations- oder E-Mail-Dienste.
             </p>
 
             <h4>7. Speicherdauer</h4>
             <p>
-                Personenbezogene Daten speichern wir nur so lange, wie dies fuer die genannten Zwecke erforderlich ist oder
-                gesetzliche Aufbewahrungspflichten bestehen. Die im Cookie-Hinweis gespeicherte Entscheidung wird fuer einen
-                begrenzten Zeitraum gespeichert und danach automatisch geloescht.
+                Personenbezogene Daten speichern wir nur so lange, wie dies für die genannten Zwecke erforderlich ist oder
+                gesetzliche Aufbewahrungspflichten bestehen. Die im Cookie-Hinweis gespeicherte Entscheidung wird für einen
+                begrenzten Zeitraum gespeichert und danach automatisch gelöscht.
             </p>
 
             <h4>8. Ihre Rechte</h4>
             <p>
-                Sie haben nach Massgabe der gesetzlichen Voraussetzungen das Recht auf Auskunft, Berichtigung, Loeschung,
-                Einschraenkung der Verarbeitung, Datenuebertragbarkeit sowie Widerspruch gegen die Verarbeitung Ihrer
-                personenbezogenen Daten. Eine erteilte Einwilligung koennen Sie jederzeit mit Wirkung fuer die Zukunft widerrufen.
+                Sie haben nach Maßgabe der gesetzlichen Voraussetzungen das Recht auf Auskunft, Berichtigung, Löschung,
+                Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung Ihrer
+                personenbezogenen Daten. Eine erteilte Einwilligung können Sie jederzeit mit Wirkung für die Zukunft widerrufen.
             </p>
 
             <h4>9. Beschwerderecht</h4>
             <p>
-                Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehoerde ueber die Verarbeitung Ihrer personenbezogenen
+                Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer personenbezogenen
                 Daten zu beschweren.
             </p>
 
             <h4>10. Stand</h4>
-            <p>Stand dieser Datenschutzerklaerung: 29.03.2026</p>
+            <p>Stand dieser Datenschutzerklärung: 29.03.2026</p>
         </div>
     </section>
 </main>
 
 <footer class="site-footer">
-    <p>&copy; 2026 P.S. Montage - Inh. Piotr Schyga</p>
+    <p>&copy; 2026 LJDrg für P.S. Montage - Inh. Piotr Schyga</p>
     <p>Beratung, Planung und Montage aus einer Hand</p>
     <div class="footer-legal-links">
         <a href="index.html#impressum">Impressum</a>

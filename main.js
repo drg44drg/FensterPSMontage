@@ -1,11 +1,33 @@
 document.addEventListener("DOMContentLoaded", () => {
     const consentCookieName = "ps_montage_cookie_consent";
     const googleFontsHref = "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap";
+    const root = document.documentElement;
     const cookieBanner = document.querySelector(".cookie-banner");
     const cookieButtons = cookieBanner?.querySelectorAll("[data-cookie-choice]") ?? [];
     const reopenCookieSettingsButton = document.querySelector("[data-open-cookie-settings]");
     const toggle = document.querySelector(".menu-toggle");
     const mobileNav = document.querySelector(".mobile-nav");
+    const themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
+    const themeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+    const getPreferredTheme = () => {
+        return themeMediaQuery.matches ? "dark" : "light";
+    };
+
+    const updateThemeToggleUi = (theme) => {
+        const nextTheme = theme === "dark" ? "Hellmodus" : "Dunkelmodus";
+
+        themeToggleButtons.forEach((button) => {
+            button.setAttribute("aria-label", `${nextTheme} aktivieren`);
+            button.setAttribute("title", `${nextTheme} aktivieren`);
+            button.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+        });
+    };
+
+    const applyTheme = (theme) => {
+        root.setAttribute("data-theme", theme);
+        updateThemeToggleUi(theme);
+    };
 
     const getConsent = () => {
         const cookieEntry = document.cookie
@@ -21,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const loadGoogleFonts = () => {
-        const existingLink = document.querySelector(`link[data-font-consent="google-inter"]`);
+        const existingLink = document.querySelector('link[data-font-consent="google-inter"]');
         if (existingLink) {
             return;
         }
@@ -58,8 +80,33 @@ document.addEventListener("DOMContentLoaded", () => {
         showCookieBanner();
     };
 
+    const setMenuState = (isOpen) => {
+        mobileNav?.classList.toggle("active", isOpen);
+        toggle?.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    };
+
+    applyTheme(getPreferredTheme());
+
+    themeToggleButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            applyTheme(nextTheme);
+        });
+    });
+
+    const handleSystemThemeChange = (event) => {
+        applyTheme(event.matches ? "dark" : "light");
+    };
+
+    if (typeof themeMediaQuery.addEventListener === "function") {
+        themeMediaQuery.addEventListener("change", handleSystemThemeChange);
+    } else if (typeof themeMediaQuery.addListener === "function") {
+        themeMediaQuery.addListener(handleSystemThemeChange);
+    }
+
     toggle?.addEventListener("click", () => {
-        mobileNav?.classList.toggle("active");
+        const isOpen = !mobileNav?.classList.contains("active");
+        setMenuState(isOpen);
     });
 
     cookieButtons.forEach((button) => {
@@ -93,11 +140,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             event.preventDefault();
             window.scrollTo({
-                top: target.getBoundingClientRect().top + window.scrollY - 86,
+                top: target.getBoundingClientRect().top + window.scrollY - 108,
                 behavior: "smooth",
             });
 
-            mobileNav?.classList.remove("active");
+            setMenuState(false);
         });
     });
 
@@ -117,6 +164,87 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `mailto:info@montageexperte-ps.de?subject=${subject}&body=${body}`;
     });
 
+    const serviceSpotlight = document.querySelector(".service-spotlight");
+    const servicePanels = serviceSpotlight
+        ? Array.from(serviceSpotlight.querySelectorAll("[data-service-panel]"))
+        : [];
+
+    if (serviceSpotlight && servicePanels.length > 0) {
+        let activeServiceIndex = Math.max(0, servicePanels.findIndex((panel) => panel.classList.contains("is-active")));
+        let serviceAutoplayTimer = null;
+        let servicePaused = false;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+        const setActiveService = (nextIndex) => {
+            activeServiceIndex = nextIndex;
+
+            servicePanels.forEach((panel, index) => {
+                const isActive = index === nextIndex;
+                panel.classList.toggle("is-active", isActive);
+                panel.setAttribute("aria-pressed", isActive ? "true" : "false");
+            });
+        };
+
+        const stopServiceAutoplay = () => {
+            if (serviceAutoplayTimer) {
+                window.clearInterval(serviceAutoplayTimer);
+                serviceAutoplayTimer = null;
+            }
+        };
+
+        const startServiceAutoplay = () => {
+            stopServiceAutoplay();
+            if (reducedMotion.matches) {
+                return;
+            }
+
+            serviceAutoplayTimer = window.setInterval(() => {
+                if (servicePaused) {
+                    return;
+                }
+
+                const nextIndex = (activeServiceIndex + 1) % servicePanels.length;
+                setActiveService(nextIndex);
+            }, 4200);
+        };
+
+        setActiveService(activeServiceIndex);
+        startServiceAutoplay();
+
+        servicePanels.forEach((panel, index) => {
+            panel.addEventListener("click", () => {
+                setActiveService(index);
+                startServiceAutoplay();
+            });
+
+            panel.addEventListener("focus", () => {
+                setActiveService(index);
+            });
+
+            panel.addEventListener("mouseenter", () => {
+                setActiveService(index);
+            });
+        });
+
+        serviceSpotlight.addEventListener("mouseenter", () => {
+            servicePaused = true;
+        });
+
+        serviceSpotlight.addEventListener("mouseleave", () => {
+            servicePaused = false;
+        });
+
+        const handleReducedMotionChange = () => {
+            startServiceAutoplay();
+        };
+
+        if (typeof reducedMotion.addEventListener === "function") {
+            reducedMotion.addEventListener("change", handleReducedMotionChange);
+        } else if (typeof reducedMotion.addListener === "function") {
+            reducedMotion.addListener(handleReducedMotionChange);
+        }
+    }
+
     const carousel = document.querySelector(".project-carousel");
     const track = carousel?.querySelector(".carousel-track");
     const slides = track ? Array.from(track.querySelectorAll(".carousel-slide")) : [];
@@ -132,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (window.innerWidth <= 760) {
                 return 1;
             }
-            if (window.innerWidth <= 1024) {
+            if (window.innerWidth <= 1120) {
                 return 2;
             }
             return 3;
